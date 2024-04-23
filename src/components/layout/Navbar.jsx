@@ -9,7 +9,7 @@ import PropTypes from "prop-types";
 import { useState } from "react";
 
 function Navbar({ title }) {
-  const [showMenu, setShowMenu] = useState(false);
+  const [showMenu, setShowMenu] = useState(true);
 
   const handleShowMenu = () => {
     setShowMenu((prevState) => !prevState);

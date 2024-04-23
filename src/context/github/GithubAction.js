@@ -12,11 +12,11 @@ const github = axios.create({
 
 // Get search users (testing propose)
 export const searchUser = async (text) => {
-  const params = new URLSearchParams({
-    q: text,
-  });
+  // const params = new URLSearchParams({
+  //   q: text,
+  // });
 
-  const response = await github.get(`/search/users?${params}`);
+  const response = await github.get(`/search/users?q=${text}`);
 
   return response.data.items;
 };
@@ -24,14 +24,14 @@ export const searchUser = async (text) => {
 // Get a single user and repos
 
 export const getUserAndRepos = async (login) => {
-  const params = new URLSearchParams({
-    sort: "created",
-    per_page: 10,
-  });
+  // const params = new URLSearchParams({
+  //   sort: "created",
+  //   per_page: 10,
+  // });
 
   const [user, repos] = await Promise.all([
     github.get(`/users/${login}`),
-    github.get(`/users/${login}/repos?${params}`),
+    github.get(`/users/${login}/repos?sort=created&per_page=10`),
   ]);
 
   return { user: user.data, repos: repos.data };
