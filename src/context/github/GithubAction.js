@@ -41,7 +41,7 @@ export const searchUser = async (text) => {
 
   console.log(response2);
 
-  const response = await github.get(`/search/users?q=${text}`);
+  // const response = await github.get(`/search/users?q=${text}`);
 
   return response2.data.items;
 };
